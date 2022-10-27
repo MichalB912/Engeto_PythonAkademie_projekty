@@ -6,6 +6,7 @@ email: michal.678@seznam.cz
 discord: Michal B.#2426 
 """
 
+
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
@@ -59,7 +60,9 @@ if selection > len(TEXTS):
     exit()
 
 text = TEXTS[selection - 1]
-text_pure = text.replace(",", " ").replace(".", " ").replace("\n", " ").split()
+chosen_text = text.split()
+word_list = []
+words_lenghts = []
 
 word_count = 0
 word_title = 0
@@ -68,91 +71,52 @@ word_lowercase = 0
 word_isnumeric = 0
 sum_all_num = 0
 
-letters_1 = 0
-letters_2 = 0
-letters_3 = 0
-letters_4 = 0
-letters_5 = 0
-letters_6 = 0
-letters_7 = 0
-letters_8 = 0
-letters_9 = 0
-letters_10 = 0
-letters_11 = 0
-letters_12 = 0
-letters_13 = 0
-letters_14 = 0
-letters_15 = 0
+for word in chosen_text:
+    word = word.strip(',.')
+    word_list.append(word)
 
-for word in text_pure:
-    if word.isalpha():
-        word_count += 1
+for word in word_list:
+    word_count += 1
+    words_lenghts.append(len(word))
+
     if word.istitle():
         word_title += 1
-    if word.isupper() and word.isalpha():
+    elif word.isupper():
         word_uppercase += 1
-    if word.islower() and word.isalpha():
+    elif word.islower():
         word_lowercase += 1
-    if word.isdigit():
+    elif word.isnumeric():
         word_isnumeric += 1
         sum_all_num += int(word)
-    if len(word) == 1:
-        letters_1 += 1
-    if len(word) == 2:
-        letters_2 += 1
-    if len(word) == 3:
-        letters_3 += 1
-    if len(word) == 4:
-        letters_4 += 1
-    if len(word) == 5:
-        letters_5 += 1
-    if len(word) == 6:
-        letters_6 += 1
-    if len(word) == 7:
-        letters_7 += 1
-    if len(word) == 8:
-        letters_8 += 1
-    if len(word) == 9:
-        letters_9 += 1
-    if len(word) == 10:
-        letters_10 += 1
-    if len(word) == 11:
-        letters_11 += 1
-    if len(word) == 12:
-        letters_12 += 1
-    if len(word) == 13:
-        letters_13 += 1
-    if len(word) == 14:
-        letters_14 += 1
-    if len(word) == 15:
-        letters_15 += 1
-    
 
-print(line)
-print(f"There are {word_count} words in the selected text.")
-print(f"There are {word_title} titlecase words.")
-print(f"There are {word_uppercase} uppercase words.")
-print(f"There are {word_lowercase} lowercase words.")
-print(f"There are {word_isnumeric} numeric strings.")
-print(f"The sum of all numbers {sum_all_num}")
-print(line)
-print("LEN|OCCURENCES|NR.")
-print(line)
-print("1|", "*" * letters_1, "|", + letters_1) 
-print("2|", "*" * letters_2, "|", + letters_2) 
-print("3|", "*" * letters_3, "|", + letters_3) 
-print("4|", "*" * letters_4, "|", + letters_4) 
-print("5|", "*" * letters_5, "|", + letters_5) 
-print("6|", "*" * letters_6, "|", + letters_6) 
-print("7|", "*" * letters_7, "|", + letters_7) 
-print("8|", "*" * letters_8, "|", + letters_8) 
-print("9|", "*" * letters_9, "|", + letters_9) 
-print("10|", "*" * letters_10, "|", + letters_10) 
-print("11|", "*" * letters_11, "|", + letters_11) 
-print("12|", "*" * letters_12, "|", + letters_12) 
-print("13|", "*" * letters_13, "|", + letters_13) 
-print("14|", "*" * letters_14, "|", + letters_14) 
-print("15|", "*" * letters_15, "|", + letters_15)  
+print(
+    f'There are {word_count} words in the selected text.',
+    f'There are {word_title} titlecase words.',
+    f'There are {word_uppercase} uppercase words.',
+    f'There are {word_lowercase} lowercase words.',
+    f'There are {word_isnumeric} numeric strings.',
+    f'The sum of all numbers {sum_all_num}',
+    line,
+    f'LEN|   OCCURENCES   |NR.',
+    line,
+    f'  1|{"*" * words_lenghts.count(1)}|{words_lenghts.count(1)}',
+    f'  2|{"*" * words_lenghts.count(2)}|{words_lenghts.count(2)}',
+    f'  3|{"*" * words_lenghts.count(3)}|{words_lenghts.count(3)}',
+    f'  4|{"*" * words_lenghts.count(4)}|{words_lenghts.count(4)}',
+    f'  5|{"*" * words_lenghts.count(5)}|{words_lenghts.count(5)}',
+    f'  6|{"*" * words_lenghts.count(6)}|{words_lenghts.count(6)}',
+    f'  7|{"*" * words_lenghts.count(7)}|{words_lenghts.count(7)}',
+    f'  8|{"*" * words_lenghts.count(8)}|{words_lenghts.count(8)}',
+    f'  9|{"*" * words_lenghts.count(9)}|{words_lenghts.count(9)}',
+    f' 10|{"*" * words_lenghts.count(10)}|{words_lenghts.count(10)}',
+    f' 11|{"*" * words_lenghts.count(11)}|{words_lenghts.count(11)}',
+    f' 12|{"*" * words_lenghts.count(12)}|{words_lenghts.count(12)}',
+    f' 13|{"*" * words_lenghts.count(13)}|{words_lenghts.count(13)}',
+    line,
+    sep='\n'
+    )
+
+print(words_lenghts)
 
 
 
